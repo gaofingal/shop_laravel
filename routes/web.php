@@ -12,10 +12,20 @@
 */
 
 Route::get('/', function () {
-    return "Hello";
-//    return view('welcome');
+    return view('welcome');
 });
 
+// 用户登录注册路由
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+// 后台首页
+Route::get('/home', 'AdminController@index')->name('home');
+
+// 新闻汇总页面
+Route::get('/news', 'NewsController@index')->name('news');
+
+// 新闻分类页面
+Route::get('/category', 'NewsController@index')->name('category');
+
+// 新闻采集页面
+Route::get('/collection', 'NewsController@index')->name('collection');
