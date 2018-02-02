@@ -82,21 +82,27 @@
                             <a href="#"><i class="glyphicon glyphicon-plus"></i><span> 新闻</span></a>
                             <ul class="nav nav-pills nav-stacked">
                                 <li><a href="{{ asset('news') }}">新闻汇总</a></li>
-                                <li><a href="{{ asset('category') }}">新闻分类</a></li>
-                                <li><a href="{{ asset('category') }}">新闻编辑</a></li>
+                                <li class="accordion">
+                                    <a href="{{ asset('category') }}"><i class="glyphicon glyphicon-plus"></i><span> 新闻分类</span></a>
+                                    <ul class="nav nav-pills nav-stacked">
+                                        <li><a href="#">社会</a></li>
+                                        <li><a href="#">国际</a></li>
+                                        <li><a href="#">体育</a></li>
+                                        <li><a href="#">民生</a></li>
+                                    </ul>
+                                </li>
                             </ul>
                         </li>
                         <li class="accordion">
                             <a href="#"><i class="glyphicon glyphicon-plus"></i><span> 账号管理</span></a>
                             <ul class="nav nav-pills nav-stacked">
                                 <li><a href="#">账号列表</a></li>
-                                <li><a href="#"></a></li>
                             </ul>
                         </li>
                         <li class="accordion">
                             <a href="#"><i class="glyphicon glyphicon-plus"></i><span> 信息管理</span></a>
                             <ul class="nav nav-pills nav-stacked">
-                                <li><a href="#">采集</a></li>
+                                <li><a href="{{ route('collection') }}">采集</a></li>
                             </ul>
                         </li>
                         <li class="accordion">
