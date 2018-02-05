@@ -29,3 +29,6 @@ Route::get('/category', 'NewsController@index')->name('category');
 
 // 新闻采集页面
 Route::get('/collection', 'NewsController@index')->name('collection');
+
+
+Route::get("/test","TestsController@index")->name('test');
