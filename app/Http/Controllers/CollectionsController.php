@@ -9,7 +9,7 @@
 namespace App\Http\Controllers;
 
 
-class CollectController extends Controller
+class CollectionsController extends Controller
 {
     public function __construct()
     {

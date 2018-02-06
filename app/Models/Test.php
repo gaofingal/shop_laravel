@@ -1,23 +1,20 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: Administrator
- * Date: 2018/2/5 0005
- * Time: 14:32
- */
+
 
 namespace App\Models;
 
 
 use Illuminate\Support\Facades\DB;
-use Jenssegers\Mongodb\Eloquent\Model;
+use Jenssegers\Mongodb\Eloquent\Model ;
 
 class Test extends Model
 {
-    protected $collection = 'users';
-    protected $connection = 'test';
+    /**
+     * 获取所有的数据
+     */
+    public static function getAllNews() {
 
-    public static function test() {
+        $users = parent::all();
         $users = DB::collection('users')->get();
         var_dump($users);
     }

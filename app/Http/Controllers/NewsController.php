@@ -1,22 +1,48 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: Administrator
- * Date: 2018/2/1 0001
- * Time: 16:33
- */
+
 
 namespace App\Http\Controllers;
 
 
+use App\Models\News;
+
 class NewsController extends Controller
 {
-    public function __construct()
+
+    /**
+     * 获取所有的新闻
+     *
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function index(){
+        $result = News::getAllNews();
+
+        // 验证获取的数据
+
+
+        // 验证成功返回数据并渲染
+        return view('news',["arrNews"=>$result]);
+    }
+
+    public function removeNewsById($id)
+    {
+        $result = News::deleted($id);
+
+        // 删除结果
+
+        return view("news");
+    }
+
+
+    public function editNewsById()
     {
 
     }
 
-    public function index(){
-        return view('news');
+
+    public function addNew()
+    {
+
     }
+
 }

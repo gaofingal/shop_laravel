@@ -32,3 +32,5 @@ Route::get('/collection', 'NewsController@index')->name('collection');
 
 
 Route::get("/test","TestsController@index")->name('test');
+Route::get("/news/{id}","NewsController@removeNewsById");
+

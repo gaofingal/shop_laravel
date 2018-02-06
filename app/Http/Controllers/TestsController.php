@@ -11,6 +11,7 @@ class TestsController extends Controller
 
     public function index()
     {
-        Test::test();
+        Test::index();
     }
+
 }

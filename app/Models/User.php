@@ -71,8 +71,5 @@ class User extends Authenticatable
         'news_password', 'remember_token',
     ];
 
-    public function index()
-    {
-        $db = DB::connection('mongodb');
-    }
+
 }
