@@ -28,7 +28,11 @@ Route::get('/news', 'NewsController@index')->name('news');
 Route::get('/category', 'NewsController@index')->name('category');
 
 // 新闻采集页面
-Route::get('/collection', 'NewsController@index')->name('collection');
+//Route::get('/collection', 'NewsController@index')->name('collection');
+
+// 添加新闻
+//Route::methods('/addNews', 'NewsController@addNews')->name('add');
+Route::match(['get', 'post'], '/addNews','NewsController@addNews')->name('add');
 
 
 Route::get("/test","TestsController@index")->name('test');

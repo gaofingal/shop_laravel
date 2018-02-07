@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 
 
 use App\Models\News;
+use Illuminate\Http\Request;
 
 class NewsController extends Controller
 {
@@ -40,8 +41,17 @@ class NewsController extends Controller
     }
 
 
-    public function addNew()
+    public function addNews(Request $request)
     {
+        $strMethod = $request->getMethod();
+        if(strtolower($strMethod) === "get")
+        {
+            return view("addNews");
+        }else{
+            var_dump($request);
+            exit;
+        }
+
 
     }
 

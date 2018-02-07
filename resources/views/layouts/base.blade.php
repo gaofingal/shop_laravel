@@ -25,6 +25,9 @@
     <link href="{{ asset('css/uploadify.css') }}" rel='stylesheet'>
     <link href="{{ asset('css/animate.min.css') }}" rel='stylesheet'>
 
+    <!-- UMeditor Css -->
+    <link href="{{ asset('umeditor/themes/default/css/umeditor.css') }}" type="text/css" rel="stylesheet">
+
     <!-- jQuery -->
     <script src="{{ asset('charisma/jquery/jquery.min.js') }}"></script>
 
@@ -94,15 +97,15 @@
                             </ul>
                         </li>
                         <li class="accordion">
-                            <a href="#"><i class="glyphicon glyphicon-plus"></i><span> 账号管理</span></a>
+                            <a href="#"><i class="glyphicon glyphicon-plus"></i><span> 新闻管理</span></a>
                             <ul class="nav nav-pills nav-stacked">
-                                <li><a href="#">账号列表</a></li>
+                                <li><a href="{{ route('add') }}">添加</a></li>
                             </ul>
                         </li>
                         <li class="accordion">
-                            <a href="#"><i class="glyphicon glyphicon-plus"></i><span> 信息管理</span></a>
+                            <a href="#"><i class="glyphicon glyphicon-plus"></i><span> 账号管理</span></a>
                             <ul class="nav nav-pills nav-stacked">
-                                <li><a href="{{ route('collection') }}">采集</a></li>
+                                <li><a href="#">账号列表</a></li>
                             </ul>
                         </li>
                         <li class="accordion">
@@ -206,6 +209,11 @@
 <!-- application script for Charisma demo -->
 <script src="{{ asset('js/charisma.js') }}"></script>
 
+<!-- Umeditor script start-->
+<script type="text/javascript" charset="umeditor/utf-8" src="{{ asset('umeditor/umeditor.config.js') }}"></script>
+<script type="text/javascript" charset="umeditor/utf-8" src="{{ asset('umeditor/umeditor.min.js') }}"></script>
+<script type="text/javascript" src="{{ asset('umeditor/lang/zh-cn/zh-cn.js') }}"></script>
+<!-- Umeditor script end-->
 
 </body>
 </html>

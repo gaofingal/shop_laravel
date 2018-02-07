@@ -18,6 +18,11 @@ class News extends Model
     protected $collection = 'news';
 
 
+    /**
+     * 获取所有的新闻
+     *
+     * @return mixed
+     */
     public static function getAllNews()
     {
         $users = DB::collection('news')->get();
@@ -28,13 +33,31 @@ class News extends Model
         return $users;
     }
 
+    /**
+     * 移除新闻
+     *
+     * @param $id
+     */
     public static function remove($id)
     {
         $user = DB::collection('users')->where('_id', $id)->first();
         DB::collection("news")->get();
     }
 
-    public static function edit()
+    /**
+     * 编辑新闻
+     *
+     * @param News $news
+     */
+    public static function edit(News $news)
+    {
+
+    }
+
+    /**
+     * 增加新闻
+     */
+    public static function add()
     {
 
     }

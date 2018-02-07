@@ -38,6 +38,7 @@
                             <tbody>
                             @foreach($arrNews as $new)
                                 <tr>
+                                    <input type="hidden" id="news_id" value="{{ $new["_id"] }}" />
                                     <td>{{ $new["title"]}}</td>
                                     <td>{{ $new["create_time"] }}</td>
                                     <td>{{ $new["content"] }}</td>
@@ -69,7 +70,6 @@
                                             删除
                                         </a>
                                     </td>
-
                                 </tr>
                                 @endforeach
 
