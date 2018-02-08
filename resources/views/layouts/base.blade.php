@@ -2,13 +2,14 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>Free HTML5 Bootstrap Admin Template</title>
+    <title>东亚新闻后端管理</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="Charisma, a fully featured, responsive, HTML5, Bootstrap admin template.">
     <meta name="author" content="Muhammad Usman">
 
     <!-- The styles -->
     <link id="bs-css" href="{{ asset('css/bootstrap-cerulean.min.css') }}" rel="stylesheet">
+
 
     <link href="{{ asset('css/charisma-app.css') }}" rel="stylesheet">
     <link href="{{ asset('charisma/fullcalendar/dist/fullcalendar.css') }}" rel='stylesheet'>

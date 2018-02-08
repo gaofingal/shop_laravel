@@ -15,26 +15,19 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get();
+
 // 用户登录注册路由
 Auth::routes();
 
-// 后台首页
-Route::get('/home', 'AdminController@index')->name('home');
-
-// 新闻汇总页面
-Route::get('/news', 'NewsController@index')->name('news');
-
-// 新闻分类页面
-Route::get('/category', 'NewsController@index')->name('category');
-
-// 新闻采集页面
-//Route::get('/collection', 'NewsController@index')->name('collection');
-
-// 添加新闻
-//Route::methods('/addNews', 'NewsController@addNews')->name('add');
-Route::match(['get', 'post'], '/addNews','NewsController@addNews')->name('add');
-
-
 Route::get("/test","TestsController@index")->name('test');
-Route::get("/news/{id}","NewsController@removeNewsById");
 
+
+// 后端管理
+Route::group(["prefix"=>"admin"],function (){
+    Route::get("/news/index","NewsController@getList");
+    Route::post("/news/add","NewsController@addNews");
+    Route::post("/news/edit","NewsController@editNews");
+    Route::get("/news/del","NewsController@delNews");
+    Route::get("/news/switch","NewsController@changeStatus");
+});

@@ -12,11 +12,21 @@ class Test extends Model
     /**
      * 获取所有的数据
      */
-    public static function getAllNews() {
+    public static function index() {
 
-        $users = parent::all();
-        $users = DB::collection('users')->get();
-        var_dump($users);
+       $arr = [
+           'name'=>"gao",
+           'age'=>12,
+           'sex'=>0,
+           'city'=>"chengdu",
+           'hobby'=>"football",
+       ];
+
+       $result_insert = DB::collection("test")->insert($arr);
+       var_dump($result_insert);
+        $result_get = DB::collection("test")->get();
+        var_dump($result_get);
+        exit;
     }
 
 }

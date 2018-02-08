@@ -45,27 +45,27 @@
                                     <td>
                                         @switch($new["status"])
                                             @case(0)
-                                            <span class="label-default label label-danger">Banned</span>
+                                            <span class="btn-default btn btn-danger op_changeStatus">禁用</span>
                                             @break
                                             @case(1)
-                                            <span class="label-success label label-default">Active</span>
+                                            <span class="btn-success btn btn-default op_changeStatus">启用</span>
                                             @break
                                             @case(3)
-                                            <span class="label-warning label label-default">Pending</span>
+                                            <span class="btn-warning btn btn-default op_changeStatus">待审核</span>
                                             @default
-                                            <span class="label-default label label-danger">Banned</span>
+                                            <span class="btn-default btn btn-danger op_changeStatus">禁用</span>
                                         @endswitch
                                     </td>
                                     <td>
-                                        <a class="btn btn-success" href="#">
+                                        <a class="btn btn-success op_view" href="#">
                                             <i class="glyphicon glyphicon-zoom-in icon-white"></i>
                                             详情
                                         </a>
-                                        <a class="btn btn-info" href="#">
+                                        <a class="btn btn-info  op_edit" href="#">
                                             <i class="glyphicon glyphicon-edit icon-white"></i>
                                             编辑
                                         </a>
-                                        <a class="btn btn-danger" href="#">
+                                        <a class="btn btn-danger op_delete" href="{{ url('/news/del',['id'=>$new['_id']]) }}">
                                             <i class="glyphicon glyphicon-trash icon-white"></i>
                                             删除
                                         </a>
@@ -81,4 +81,39 @@
             </div>
         </div>
     </div>
+    <script type="text/javascript">
+        {{--$(function () {--}}
+            {{--// 点击删除数据操作--}}
+            {{--$(".op_delete").on("click",function () {--}}
+                {{--var id = $(this).parent().siblings("#news_id").val();--}}
+                {{--$.get("{{ route('delNews') }}",{id:id},function (data) {--}}
+                    {{--alert("删除成功！");--}}
+                    {{--window.location.reload();--}}
+                {{--});--}}
+            {{--})--}}
+
+            {{--// 详情页面操作--}}
+            {{--$(".op_view").on("click",function () {--}}
+                {{--var id = $(this).parent().siblings("#news_id").val();--}}
+            {{--});--}}
+
+            {{--// 编辑页面操作--}}
+            {{--$(".op_edit").on("click",function () {--}}
+                {{--var id = $(this).parent().siblings("#news_id").val();--}}
+                {{--$.get("{{ route('add') }}",{id:id},function () {--}}
+                    {{----}}
+                {{--});--}}
+            {{--});--}}
+
+            {{--// 更改状态--}}
+            {{--$(".op_changeStatus").on("click",function () {--}}
+                {{--var id = $(this).parent().siblings("#news_id").val();--}}
+                {{--$.get("{{ route('changeStatus') }}",{id:id},function (data) {--}}
+                    {{--alert("更改成功！")--}}
+                    {{--window.location.reload();--}}
+                {{--});--}}
+            {{--})--}}
+        {{--});--}}
+
+    </script>
     @endsection

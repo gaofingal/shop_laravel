@@ -25,7 +25,7 @@ class News extends Model
      */
     public static function getAllNews()
     {
-        $users = DB::collection('news')->get();
+        $users = DB::collection('news')->orderBy('create_time', 'desc')->get();
 
         // 验证查库结果
 
@@ -40,8 +40,9 @@ class News extends Model
      */
     public static function remove($id)
     {
-        $user = DB::collection('users')->where('_id', $id)->first();
-        DB::collection("news")->get();
+        $user = DB::collection('news')->where('_id', $id)->delete();
+
+
     }
 
     /**
@@ -56,9 +57,17 @@ class News extends Model
 
     /**
      * 增加新闻
+     *
+     * @param array $arrInput
+     * @return array
      */
-    public static function add()
+    public static function add(array $arrInput = [])
     {
-
+        if (count($arrInput) == 0) {
+            return ['1', 'parameter is empty'];
+        }
+        $result = DB::collection("news")->insert($arrInput);
+        return $result;
     }
+
 }
