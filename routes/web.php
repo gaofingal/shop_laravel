@@ -15,19 +15,22 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get();
 
 // 用户登录注册路由
 Auth::routes();
 
-Route::get("/test","TestsController@index")->name('test');
+Route::get("/test", "TestsController@index")->name('test');
 
 
 // 后端管理
-Route::group(["prefix"=>"admin"],function (){
-    Route::get("/news/index","NewsController@getList");
-    Route::post("/news/add","NewsController@addNews");
-    Route::post("/news/edit","NewsController@editNews");
-    Route::get("/news/del","NewsController@delNews");
-    Route::get("/news/switch","NewsController@changeStatus");
+
+Route::group(["prefix"=>"admin"],function(){
+    Route::get("/news/index", "NewsController@getList");
+    Route::any("/news/add", "NewsController@addNews");
+    Route::any("/news/view/{id}", "NewsController@viewNews");
+    Route::any("/news/edit/{id}", "NewsController@editNews");
+    Route::get("/news/del/{id}", "NewsController@delNews");
+    Route::get("/news/switch", "NewsController@changeStatus")->name("changeStatus");
+
 });
+

@@ -9,7 +9,7 @@
     <title>{{ config('app.name', 'Laravel') }}</title>
 
     <!-- The styles -->
-    <link id="bs-css" href="{{  asset('css/bootstrap-cerulean.min.css')  }}" rel="stylesheet">
+    <link id="bs-css" href="{{  asset('css/ootstrap-cerulean.min.css')  }}" rel="stylesheet">
     <link href="{{asset( 'css/charisma-app.css')}}" rel="stylesheet">
     <link href="{{asset('css/jquery.noty.css')}}" rel='stylesheet'>
     <link href="{{asset('css/noty_theme_default.css')}}" rel='stylesheet'>

@@ -17,6 +17,8 @@ class News extends Model
 
     protected $collection = 'news';
 
+    protected $primaryKey = "id";
+
 
     /**
      * 获取所有的新闻
@@ -33,17 +35,6 @@ class News extends Model
         return $users;
     }
 
-    /**
-     * 移除新闻
-     *
-     * @param $id
-     */
-    public static function remove($id)
-    {
-        $user = DB::collection('news')->where('_id', $id)->delete();
-
-
-    }
 
     /**
      * 编辑新闻

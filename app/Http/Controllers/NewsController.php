@@ -16,7 +16,7 @@ class NewsController extends Controller
      *
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function index()
+    public function getList()
     {
         $result = News::getAllNews();
 
@@ -24,7 +24,7 @@ class NewsController extends Controller
 
 
         // 验证成功返回数据并渲染
-        return view('news', ["arrNews" => $result]);
+        return view('news.list', ["arrNews" => $result]);
     }
 
     /**
@@ -32,16 +32,16 @@ class NewsController extends Controller
      *
      * @param Request $request
      * @param $id
-     * @return void
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function removeNewsById(Request $request, $id)
     {
         $news = News::find($id);
         // 删除结果
         if ($news->delete()) {
-            return redirect("/news")->with("success","删除成功");
+            return redirect("/news/index")->with("success","删除成功");
         }else{
-            return redirect("/news")->with("error","删除失败");
+            return redirect("/news/index")->with("error","删除失败");
         }
     }
 
@@ -102,18 +102,6 @@ class NewsController extends Controller
         $objNews->save();
         return $objNews;
 
-    }
-
-
-    public function getList()
-    {
-        $result = News::getAllNews();
-
-        // 验证获取的数据
-
-
-        // 验证成功返回数据并渲染
-        return view('news', ["arrNews" => $result]);
     }
 
 }
