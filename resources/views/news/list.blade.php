@@ -14,15 +14,8 @@
         <div class="row">
             <div class="box col-md-12">
                 <div class="box-inner">
-                    <div class="box-header well" data-original-title="">
-                        <h2><i class="glyphicon glyphicon-user"></i> Datatable + Responsive</h2>
-
-                        <div class="box-icon">
-                            <a href="#" class="btn btn-setting btn-round btn-default"><i class="glyphicon glyphicon-cog"></i></a>
-                            <a href="#" class="btn btn-minimize btn-round btn-default"><i
-                                        class="glyphicon glyphicon-chevron-up"></i></a>
-                            <a href="#" class="btn btn-close btn-round btn-default"><i class="glyphicon glyphicon-remove"></i></a>
-                        </div>
+                    <div class="box-header well">
+                        <h2><i class="glyphicon glyphicon-th-list"></i> 新闻列表</h2>
                     </div>
                     <div class="box-content">
                         <table class="table table-striped table-bordered bootstrap-datatable datatable responsive">
@@ -38,9 +31,9 @@
                             <tbody>
                             @foreach($arrNews as $new)
                                 <tr>
-                                    <input type="hidden" id="news_id" value="{{ $new["_id"] }}" />
+                                    <input type="hidden" id="news_id" name="id" value="{{ $new["_id"] }}" />
                                     <td>{{ $new["title"]}}</td>
-                                    <td>{{ $new["create_time"] }}</td>
+                                    <td>{{ $new["created_time"] }}</td>
                                     <td>{{ $new["content"] }}</td>
                                     <td>
                                         @switch($new["status"])
@@ -57,15 +50,15 @@
                                         @endswitch
                                     </td>
                                     <td>
-                                        <a class="btn btn-success op_view" href="{{ url('/news/del',['id'=>$new['_id']]) }}">
+                                        <a class="btn btn-success op_view" href="{{ url('/admin/news/view',['id'=>$new['_id']]) }}">
                                             <i class="glyphicon glyphicon-zoom-in icon-white"></i>
                                             详情
                                         </a>
-                                        <a class="btn btn-info  op_edit" href="{{ url('/news/edit',['id'=>$new['_id']]) }}">
+                                        <a class="btn btn-info  op_edit" href="{{ url('/admin/news/edit',['id'=>$new['_id']]) }}">
                                             <i class="glyphicon glyphicon-edit icon-white"></i>
                                             编辑
                                         </a>
-                                        <a class="btn btn-danger op_delete" href="{{ url('/news/del',['id'=>$new['_id']]) }}">
+                                        <a class="btn btn-danger op_delete" href="{{ url('/admin/news/del',['id'=>$new['_id']]) }}">
                                             <i class="glyphicon glyphicon-trash icon-white"></i>
                                             删除
                                         </a>
@@ -83,28 +76,6 @@
     </div>
     <script type="text/javascript">
         $(function () {
-            {{--// 点击删除数据操作--}}
-            {{--$(".op_delete").on("click",function () {--}}
-                {{--var id = $(this).parent().siblings("#news_id").val();--}}
-                {{--$.get("{{ route('delNews') }}",{id:id},function (data) {--}}
-                    {{--alert("删除成功！");--}}
-                    {{--window.location.reload();--}}
-                {{--});--}}
-            {{--})--}}
-
-            {{--// 详情页面操作--}}
-            {{--$(".op_view").on("click",function () {--}}
-                {{--var id = $(this).parent().siblings("#news_id").val();--}}
-            {{--});--}}
-
-            {{--// 编辑页面操作--}}
-            {{--$(".op_edit").on("click",function () {--}}
-                {{--var id = $(this).parent().siblings("#news_id").val();--}}
-                {{--$.get("{{ route('add') }}",{id:id},function () {--}}
-                    {{----}}
-                {{--});--}}
-            {{--});--}}
-
             // 更改状态
             $(".op_changeStatus").on("click",function () {
                 var id = $(this).parent().siblings("#news_id").val();

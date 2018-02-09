@@ -86,7 +86,7 @@
                         <li class="accordion">
                             <a href="#"><i class="glyphicon glyphicon-plus"></i><span> 新闻</span></a>
                             <ul class="nav nav-pills nav-stacked">
-                                <li><a href="#">新闻汇总</a></li>
+                                <li><a href="{{ url("/admin/news/index") }}">新闻汇总</a></li>
                                 <li class="accordion">
                                     <a href="#"><i class="glyphicon glyphicon-plus"></i><span> 新闻分类</span></a>
                                     <ul class="nav nav-pills nav-stacked">
@@ -101,7 +101,7 @@
                         <li class="accordion">
                             <a href="#"><i class="glyphicon glyphicon-plus"></i><span> 新闻管理</span></a>
                             <ul class="nav nav-pills nav-stacked">
-                                <li><a href="#">添加</a></li>
+                                <li><a href="{{ url('/admin/news/add') }}">添加</a></li>
                             </ul>
                         </li>
                         <li class="accordion">
@@ -144,11 +144,45 @@
 
 </div><!--/.fluid-container-->
 
+<!-- external javascript -->
+
+<script src="{{ asset('charisma/bower_components/bootstrap/dist/js/bootstrap.min.js') }}"></script>
+
+<!-- library for cookie management -->
+<script src="{{ asset('charisma/js/jquery.cookie.js') }}"></script>
+<!-- calender plugin -->
+<script src="{{ asset('charisma/bower_components/moment/min/moment.min.js') }}"></script>
+<script src="{{ asset('charisma/bower_components/fullcalendar/dist/fullcalendar.min.js') }}"></script>
+<!-- data table plugin -->
+<script src="{{ asset('charisma/js/jquery.dataTables.min.js') }}"></script>
+
+<!-- select or dropdown enhancer -->
+<script src="{{ asset('charisma/bower_components/chosen/chosen.jquery.min.js') }}"></script>
+<!-- plugin for gallery image view -->
+<script src="{{ asset('charisma/bower_components/colorbox/jquery.colorbox-min.js') }}"></script>
+<!-- notification plugin -->
+<script src="{{ asset('charisma/js/jquery.noty.js') }}"></script>
+<!-- library for making tables responsive -->
+<script src="{{ asset('charisma/bower_components/responsive-tables/responsive-tables.js') }}"></script>
+<!-- tour plugin -->
+<script src="{{ asset('charisma/bower_components/bootstrap-tour/build/js/bootstrap-tour.min.js') }}"></script>
+<!-- star rating plugin -->
+<script src="{{ asset('charisma/js/jquery.raty.min.js') }}"></script>
+<!-- for iOS style toggle switch -->
+<script src="{{ asset('charisma/js/jquery.iphone.toggle.js') }}"></script>
+<!-- autogrowing textarea plugin -->
+<script src="{{ asset('charisma/js/jquery.autogrow-textarea.js') }}"></script>
+<!-- multiple file upload plugin -->
+<script src="{{ asset('charisma/js/jquery.uploadify-3.1.min.js') }}"></script>
+<!-- history.js for cross-browser state change on ajax -->
+<script src="{{ asset('charisma/js/jquery.history.js') }}"></script>
+<!-- application script for Charisma demo -->
+<script src="{{ asset('charisma/js/charisma.js') }}"></script>
+
 <!-- Umeditor script start-->
 <script type="text/javascript" charset="umeditor/utf-8" src="{{ asset('umeditor/umeditor.config.js') }}"></script>
 <script type="text/javascript" charset="umeditor/utf-8" src="{{ asset('umeditor/umeditor.min.js') }}"></script>
 <script type="text/javascript" src="{{ asset('umeditor/lang/zh-cn/zh-cn.js') }}"></script>
 <!-- Umeditor script end-->
-
 </body>
 </html>

@@ -15,9 +15,21 @@ use Jenssegers\Mongodb\Eloquent\Model;
 class News extends Model
 {
 
-    protected $collection = 'news';
+    public $collection = 'news';
 
-    protected $primaryKey = "id";
+    /**
+     * The name of the "created at" column.
+     *
+     * @var string
+     */
+    const CREATED_AT = 'created_time';
+
+    /**
+     * The name of the "updated at" column.
+     *
+     * @var string
+     */
+    const UPDATED_AT = 'updated_time';
 
 
     /**
@@ -44,21 +56,6 @@ class News extends Model
     public static function edit(News $news)
     {
 
-    }
-
-    /**
-     * 增加新闻
-     *
-     * @param array $arrInput
-     * @return array
-     */
-    public static function add(array $arrInput = [])
-    {
-        if (count($arrInput) == 0) {
-            return ['1', 'parameter is empty'];
-        }
-        $result = DB::collection("news")->insert($arrInput);
-        return $result;
     }
 
 }
