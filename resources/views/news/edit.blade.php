@@ -20,16 +20,16 @@
                         <h2><i class="glyphicon glyphicon-edit"></i> 添加 </h2>
                     </div>
                     <div class="box-content">
-                        <form role="form" method="post" action="{{ url('/admin/news/edit') }}">
+                        <form role="form" method="post" action="{{ url("/news/edit") }}">
                             {{ csrf_field() }}
                             <input type="hidden" id="news_id" name="News[id]" value="{{ $news->_id }}" />
                             <div class="form-group">
                                 <label for="exampleInputEmail1">新闻标题</label>
-                                <input type="text" name="News[title]" value="{{ $news->title }}" class="form-control" id="exampleInputEmail1" placeholder="填写标题" required>
+                                <input type="text" name="News[title]" value="{{ $news->new_title }}" class="form-control" id="exampleInputEmail1" placeholder="填写标题" required>
                             </div>
                             <div class="form-group">
                                 <label for="exampleInputPassword1">编辑人</label>
-                                <input type="text" name="News[editor]" value="{{ $news->editor }}" class="form-control" id="exampleInputPassword1" placeholder="填写编辑人" required>
+                                <input type="text" name="News[editor]" value="{{ $news->new_editor }}" class="form-control" id="exampleInputPassword1" placeholder="填写编辑人" required>
                             </div>
                             <div class="form-group">
                                 <label class="control-label" for="selectError">新闻分类</label>

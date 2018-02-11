@@ -4,6 +4,9 @@
 namespace App\Http\Controllers;
 
 
+use App\Models\Category;
+use App\Models\Country;
+use App\Models\Editor;
 use App\Models\News;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -18,12 +21,10 @@ class NewsController extends Controller
      */
     public function getList()
     {
-        $result = News::getAllNews();
+        $newsModel = new News();
+        $news = $newsModel->all();
 
-        // 验证获取的数据
-//        var_dump($result);exit;
-        // 验证成功返回数据并渲染
-        return view('news.list', ["arrNews" => $result]);
+        return view('news.list', ["news" => $news]);
     }
 
     /**
@@ -37,39 +38,33 @@ class NewsController extends Controller
         $news = News::find($id);
         // 删除结果
         if ($news->delete()) {
-            return redirect("/admin/news/index")->with("success","删除成功");
-        }else{
-            return redirect("/admin/news/index")->with("error","删除失败");
+            return redirect("/admin/news/index")->with("success", "删除成功");
+        } else {
+            return redirect("/admin/news/index")->with("error", "删除失败");
         }
     }
 
     /**
      * 根据id重新编辑该新闻
-     * @param Request $request
+     *
      * @param $id
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector|\Illuminate\View\View
      */
-    public function editNews(Request $request, $id)
+    public function editNews($id)
     {
-        dd($request);exit;
-        if($request->isMethod("POST"))
-        {
-            $arrInput = $request->input("News");
-            $News = new News();
-            $News->title = $arrInput["title"];
-            $News->content = $arrInput["content"];
-            $News->editor = $arrInput["editor"];
-            $News->country = $arrInput["country"];
-            $News->category = $arrInput["category"];
-            $result = $News->save();
-            var_dump($result);exit;
-            if($result)
-            {
-                return redirect('/admin/news/index');
-            }
-        }
         $news = News::find($id);
-        return view('news.edit',["news"=>$news]);
+        return view('news.edit', ["news" => $news]);
+    }
+
+    public function modifyNews(Request $request)
+    {
+        $arrInput = $request->input("News");
+        $News = new News();
+        $result = $News->where("_id", $arrInput["id"])->update($arrInput);
+        if ($result > 0) {
+            return redirect("/news/index");
+        }
+        return redirect("/news/index");
     }
 
     /**
@@ -82,41 +77,74 @@ class NewsController extends Controller
     {
         $strMethod = $request->getMethod();
         if (strtolower($strMethod) === "get") {
-            return view("news.add");
+            $category = Category::all();
+            $editor = Editor::all();
+            $country = Country::all();
+
+            return view("news.add",[
+                "categorys"=>$category,
+                "editors"=>$editor,
+                "countrys"=>$country
+            ]);
         }
 
         $arrInput = $request->input("News");
 
         $News = new News();
-        $News->title = $arrInput["title"];
-        $News->content = $arrInput["content"];
-        $News->editor = $arrInput["editor"];
-        $News->country = $arrInput["country"];
-        $News->category = $arrInput["category"];
-        $News->status = 0;
+        $News->new_title = $arrInput["title"];
+        $News->new_content = $arrInput["content"];
+        $News->new_editor = $arrInput["editor"];
+        $News->new_country = $arrInput["country"];
+        $News->new_category = $arrInput["category"];
+        $News->new_status = 0;
         $result = $News->save();
-        if($result)
-        {
-            return redirect("/admin/news/index");
-        }else{
-            return redirect("/admin/news/add");
+        if ($result) {
+            return redirect("/news/index");
+        } else {
+            return redirect("/news/add");
         }
     }
 
     /**
      *  改变新闻状态
      * @param Request $request
+     * @return array
      */
     public function changeStatus(Request $request)
     {
         $id = $request->input("id");
         $objNews = News::find($id);
-        $oldStatus = $objNews->status;
+        $oldStatus = $objNews->new_status;
         $updateStatus = $oldStatus === 1 ? 2 : 1;
-        $objNews->status = $updateStatus;
+        $objNews->new_status = $updateStatus;
         $objNews->save();
         return $objNews;
 
+    }
+
+    public function getListNews()
+    {
+        $newModel = new Category();
+        $news = $newModel->all();
+        $arrNews = [];
+        foreach ($news as $new){
+            $item = [
+                "uId"=>$new->category_nu,
+                "title"=>$new->category_name,
+                "date"=>$new->category_name,
+                "read_count"=>"0",
+                "comment_count"=>"0",
+                "author_name"=>$new->category_name,
+                "author_id"=>$new->category_name,
+            ];
+            array_push($arrNews,$item);
+        }
+        return response()->json([
+            "error_code"=>0,
+            "result_code"=>200,
+            "message"=>"Success",
+            "result"=>["data"=>$arrNews]
+        ]);
     }
 
 }

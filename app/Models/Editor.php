@@ -2,22 +2,20 @@
 /**
  * Created by PhpStorm.
  * User: Administrator
- * Date: 2018/2/6 0006
- * Time: 14:27
+ * Date: 2018/2/11 0011
+ * Time: 11:24
  */
 
 namespace App\Models;
 
 
-use Illuminate\Support\Facades\DB;
 use Jenssegers\Mongodb\Eloquent\Model;
 
-class News extends Model
+class Editor extends Model
 {
+    public $collection = 'editor';
 
-    public $collection = 'news';
-
-    public $timestamps = true;
+    public $timestamps  = true;
 
 
     /**
@@ -42,18 +40,12 @@ class News extends Model
      */
     public static function getAllNews()
     {
-        $result = DB::collection('news')
-            ->leftjoin("country", "news.new_country", "=", "country.country_nu")
-            ->leftjoin("editor", "news.new_editor", "=", "country.editor_nu")
-            ->leftjoin("category", "news.new_country", "=", "country.category_nu")
-            ->select("news.*","country.country_name","editor.editor_name","category.category_name")
-            ->get();
-//        $result = DB::collection('news')->select("new_title","_id","new_content")->get();
+        $users = DB::collection('news')->orderBy('create_time', 'desc')->get();
 
         // 验证查库结果
 
         // 返回结果
-        return $result;
+        return $users;
     }
 
     protected function getDateFormat()

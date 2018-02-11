@@ -22,21 +22,28 @@
                             <thead>
                             <tr>
                                 <th>标题</th>
-                                <th>时间</th>
+                                <th>编辑</th>
+                                <th>分类</th>
                                 <th>内容</th>
+                                <th>国家</th>
+                                <th>时间</th>
                                 <th>状态</th>
                                 <th>操作</th>
                             </tr>
                             </thead>
                             <tbody>
-                            @foreach($arrNews as $new)
+                            @foreach($news as $new)
                                 <tr>
-                                    <input type="hidden" id="news_id" name="id" value="{{ $new["_id"] }}" />
-                                    <td>{{ $new["title"]}}</td>
-                                    <td>{{ $new["created_time"] }}</td>
-                                    <td>{{ $new["content"] }}</td>
+                                    <input type="hidden" id="news_id" name="id" value="{{ $new["_id"] }}"/>
+                                    <td>{{ $new["new_title"]}}</td>
+                                    <td>{{ $new["new_editor"]}}</td>
+                                    <td>{{ $new["new_category"]}}</td>
+                                    <td>{{ $new["new_content"] }}</td>
+                                    <td>{{ $new["new_country"] }}</td>
+                                    <td>{{ $new["updated_time"] }}</td>
+                                    <td>{{ $new["new_status"] }}</td>
                                     <td>
-                                        @switch($new["status"])
+                                        @switch($new["new_status"])
                                             @case(0)
                                             <span class="btn-default btn btn-danger op_changeStatus">禁用</span>
                                             @break
@@ -50,21 +57,24 @@
                                         @endswitch
                                     </td>
                                     <td>
-                                        <a class="btn btn-success op_view" href="{{ url('/admin/news/view',['id'=>$new['_id']]) }}">
+                                        <a class="btn btn-success op_view"
+                                           href="{{ url('/news/view',['id'=>$new['_id']]) }}">
                                             <i class="glyphicon glyphicon-zoom-in icon-white"></i>
                                             详情
                                         </a>
-                                        <a class="btn btn-info  op_edit" href="{{ url('/admin/news/edit',['id'=>$new['_id']]) }}">
+                                        <a class="btn btn-info  op_edit"
+                                           href="{{ url('/news/edit',['id'=>$new['_id']]) }}">
                                             <i class="glyphicon glyphicon-edit icon-white"></i>
                                             编辑
                                         </a>
-                                        <a class="btn btn-danger op_delete" href="{{ url('/admin/news/del',['id'=>$new['_id']]) }}">
+                                        <a class="btn btn-danger op_delete"
+                                           href="{{ url('/news/del',['id'=>$new['_id']]) }}">
                                             <i class="glyphicon glyphicon-trash icon-white"></i>
                                             删除
                                         </a>
                                     </td>
                                 </tr>
-                                @endforeach
+                            @endforeach
 
 
                             </tbody>
@@ -77,9 +87,9 @@
     <script type="text/javascript">
         $(function () {
             // 更改状态
-            $(".op_changeStatus").on("click",function () {
+            $(".op_changeStatus").on("click", function () {
                 var id = $(this).parent().siblings("#news_id").val();
-                $.get("{{ route('changeStatus') }}",{id:id},function (data) {
+                $.get("{{ route('changeStatus') }}", {id: id}, function (data) {
                     alert("更改成功！")
                     window.location.reload();
                 });
@@ -87,4 +97,4 @@
         });
 
     </script>
-    @endsection
+@endsection

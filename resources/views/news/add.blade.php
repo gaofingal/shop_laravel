@@ -20,26 +20,25 @@
                         <h2><i class="glyphicon glyphicon-edit"></i> 添加 </h2>
                     </div>
                     <div class="box-content">
-                        <form role="form" method="post" action="{{ url('/admin/news/add') }}">
+                        <form role="form" method="post" action="{{ url('/news/add') }}">
                             {{ csrf_field() }}
                             <div class="form-group">
                                 <label for="exampleInputEmail1">新闻标题</label>
                                 <input type="text" name="News[title]" class="form-control" id="exampleInputEmail1" placeholder="填写标题" required>
                             </div>
-                            <div class="form-group">
-                                <label for="exampleInputPassword1">编辑人</label>
-                                <input type="text" name="News[editor]" class="form-control" id="exampleInputPassword1" placeholder="填写编辑人" required>
-                            </div>
+                            <select id="selectError" data-rel="chosen" class="box-content" name="News[editor]">
+                                @foreach($editors as $editor )
+                                    <option value="{{$editor->editor_nu}}">{{ $editor->editor_name }}</option>
+                                @endforeach
+                            </select>
                             <div class="form-group">
                                 <label class="control-label" for="selectError">新闻分类</label>
 
                                 <div class="controls">
                                     <select id="selectError" data-rel="chosen" class="box-content" name="News[category]">
-                                        <option value="0" selected>热点</option>
-                                        <option value="1">社会</option>
-                                        <option value="2">国际</option>
-                                        <option value="3">体育</option>
-                                        <option value="4">民生</option>
+                                        @foreach($categorys as $category )
+                                        <option value="{{$category->category_nu}}">{{ $category->category_name }}</option>
+                                            @endforeach
                                     </select>
                                 </div>
                             </div>
@@ -48,11 +47,9 @@
 
                                 <div class="controls">
                                     <select id="selectError" data-rel="chosen" class="box-content" name="News[country]">
-                                        <option value="0" selected>中国</option>
-                                        <option value="1">柬埔寨</option>
-                                        <option value="2">老挝</option>
-                                        <option value="3">越南</option>
-                                        <option value="4">泰国</option>
+                                        @foreach($countrys as $country)
+                                        <option value="{{ $country->country_nu }}">{{ $country->country_name }}</option>
+                                            @endforeach
                                     </select>
                                 </div>
                             </div>

@@ -84,24 +84,31 @@
                     </div>
                     <ul class="nav nav-pills nav-stacked main-menu">
                         <li class="accordion">
-                            <a href="#"><i class="glyphicon glyphicon-plus"></i><span> 新闻</span></a>
+                            <a href="#"><i class="glyphicon glyphicon-plus"></i><span> 新闻管理</span></a>
                             <ul class="nav nav-pills nav-stacked">
-                                <li><a href="{{ url("/admin/news/index") }}">新闻汇总</a></li>
-                                <li class="accordion">
-                                    <a href="#"><i class="glyphicon glyphicon-plus"></i><span> 新闻分类</span></a>
-                                    <ul class="nav nav-pills nav-stacked">
-                                        <li><a href="#">社会</a></li>
-                                        <li><a href="#">国际</a></li>
-                                        <li><a href="#">体育</a></li>
-                                        <li><a href="#">民生</a></li>
-                                    </ul>
-                                </li>
+                                <li><a href="{{ url("/news/index") }}">新闻汇总</a></li>
+                                <li><a href="{{ url('/news/add') }}">添加新闻</a></li>
                             </ul>
                         </li>
                         <li class="accordion">
-                            <a href="#"><i class="glyphicon glyphicon-plus"></i><span> 新闻管理</span></a>
+                            <a href="#"><i class="glyphicon glyphicon-plus"></i><span> 分类管理</span></a>
                             <ul class="nav nav-pills nav-stacked">
-                                <li><a href="{{ url('/admin/news/add') }}">添加</a></li>
+                                <li><a href="{{ url('/category/index') }}">分类列表</a></li>
+                                <li><a href="{{ url('/category/add') }}">分类添加</a></li>
+                            </ul>
+                        </li>
+                        <li class="accordion">
+                            <a href="#"><i class="glyphicon glyphicon-plus"></i><span> 编辑管理</span></a>
+                            <ul class="nav nav-pills nav-stacked">
+                                <li><a href="{{ url('/editor/index') }}">编辑列表</a></li>
+                                <li><a href="{{ url('/editor/add') }}">编辑添加</a></li>
+                            </ul>
+                        </li>
+                        <li class="accordion">
+                            <a href="#"><i class="glyphicon glyphicon-plus"></i><span> 国家管理</span></a>
+                            <ul class="nav nav-pills nav-stacked">
+                                <li><a href="{{ url('/country/index') }}">国家列表</a></li>
+                                <li><a href="{{ url('/country/add') }}">国家添加</a></li>
                             </ul>
                         </li>
                         <li class="accordion">
