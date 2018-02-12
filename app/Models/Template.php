@@ -3,7 +3,7 @@
  * Created by PhpStorm.
  * User: Administrator
  * Date: 2018/2/11 0011
- * Time: 11:24
+ * Time: 15:54
  */
 
 namespace App\Models;
@@ -11,9 +11,9 @@ namespace App\Models;
 
 use Jenssegers\Mongodb\Eloquent\Model;
 
-class Editor extends Model
+class Template extends Model
 {
-    public $collection = 'edit';
+    public $collection = 'template';
 
     public $timestamps  = true;
 
@@ -32,6 +32,7 @@ class Editor extends Model
      */
     const UPDATED_AT = 'updated_time';
 
+
     protected function getDateFormat()
     {
         return time();
@@ -41,4 +42,5 @@ class Editor extends Model
     {
         return $value;
     }
+
 }

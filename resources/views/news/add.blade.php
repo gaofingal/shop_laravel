@@ -26,11 +26,18 @@
                                 <label for="exampleInputEmail1">新闻标题</label>
                                 <input type="text" name="News[title]" class="form-control" id="exampleInputEmail1" placeholder="填写标题" required>
                             </div>
-                            <select id="selectError" data-rel="chosen" class="box-content" name="News[editor]">
-                                @foreach($editors as $editor )
-                                    <option value="{{$editor->editor_nu}}">{{ $editor->editor_name }}</option>
-                                @endforeach
-                            </select>
+                            <div class="form-group">
+                                <label class="control-label" for="selectError">新闻分类</label>
+                                <div class="controls">
+
+                                    <select id="selectError" data-rel="chosen" class="box-content" name="News[editor]">
+                                        @foreach($editors as $editor )
+                                            <option value="{{$editor->editor_nu}}">{{ $editor->editor_name }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+
+                            </div>
                             <div class="form-group">
                                 <label class="control-label" for="selectError">新闻分类</label>
 
@@ -67,6 +74,8 @@
                                         var um = UM.getEditor('container');
                                         // 设置编辑器的宽
                                         um.setWidth(1400);
+                                        // 编辑器获得焦点
+                                        um.focus();
                                     });
                                 </script>
                             </div>

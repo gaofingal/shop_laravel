@@ -35,10 +35,6 @@
                                     <td>{{ $country->country_name }}</td>
                                     <td>{{ $country->updated_time}}</td>
                                     <td>
-                                        <a class="btn btn-success op_view" href="{{ url('/country/view',['id'=>$country['_id']]) }}">
-                                            <i class="glyphicon glyphicon-zoom-in icon-white"></i>
-                                            详情
-                                        </a>
                                         <a class="btn btn-info  op_edit" href="{{ url('/country/edit',['id'=>$country['_id']]) }}">
                                             <i class="glyphicon glyphicon-edit icon-white"></i>
                                             编辑

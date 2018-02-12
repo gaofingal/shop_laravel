@@ -35,10 +35,6 @@
                                     <td>{{ $category->category_name }}</td>
                                     <td>{{ $category->updated_time}}</td>
                                     <td>
-                                        <a class="btn btn-success op_view" href="{{ url('/category/view',['id'=>$category['_id']]) }}">
-                                            <i class="glyphicon glyphicon-zoom-in icon-white"></i>
-                                            详情
-                                        </a>
                                         <a class="btn btn-info  op_edit" href="{{ url('/category/edit',['id'=>$category['_id']]) }}">
                                             <i class="glyphicon glyphicon-edit icon-white"></i>
                                             编辑

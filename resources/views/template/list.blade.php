@@ -35,6 +35,10 @@
                                     <td>{{ $editor->editor_name }}</td>
                                     <td>{{ $editor->updated_time}}</td>
                                     <td>
+                                        <a class="btn btn-success op_view" href="{{ url('/category/view',['id'=>$editor['_id']]) }}">
+                                            <i class="glyphicon glyphicon-zoom-in icon-white"></i>
+                                            详情
+                                        </a>
                                         <a class="btn btn-info  op_edit" href="{{ url('/category/edit',['id'=>$editor['_id']]) }}">
                                             <i class="glyphicon glyphicon-edit icon-white"></i>
                                             编辑

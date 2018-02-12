@@ -41,7 +41,6 @@
                                     <td>{{ $new["new_content"] }}</td>
                                     <td>{{ $new["new_country"] }}</td>
                                     <td>{{ $new["updated_time"] }}</td>
-                                    <td>{{ $new["new_status"] }}</td>
                                     <td>
                                         @switch($new["new_status"])
                                             @case(0)
@@ -57,11 +56,6 @@
                                         @endswitch
                                     </td>
                                     <td>
-                                        <a class="btn btn-success op_view"
-                                           href="{{ url('/news/view',['id'=>$new['_id']]) }}">
-                                            <i class="glyphicon glyphicon-zoom-in icon-white"></i>
-                                            详情
-                                        </a>
                                         <a class="btn btn-info  op_edit"
                                            href="{{ url('/news/edit',['id'=>$new['_id']]) }}">
                                             <i class="glyphicon glyphicon-edit icon-white"></i>

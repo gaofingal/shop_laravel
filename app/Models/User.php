@@ -15,14 +15,14 @@ class User extends Authenticatable
      *
      * @var string
      */
-    protected $table = "users";
+    protected $collection = "users";
 
     /**
      * The primary key for the model.
      *
      * @var string
      */
-    protected $primaryKey = 'news_id';
+    protected $primaryKey = 'user_id';
 
     /**
      * The "type" of the auto-incrementing ID.
@@ -44,14 +44,14 @@ class User extends Authenticatable
      *
      * @var string
      */
-    const CREATED_AT = 'news_created_time';
+    const CREATED_AT = 'user_created_time';
 
     /**
      * The name of the "updated at" column.
      *
      * @var string
      */
-    const UPDATED_AT = 'news_updated_time';
+    const UPDATED_AT = 'user_updated_time';
 
     /**
      * The attributes that are mass assignable.
@@ -59,7 +59,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'news_name', 'news_password',
+        'user_name', 'user_password',
     ];
 
     /**
@@ -70,6 +70,18 @@ class User extends Authenticatable
     protected $hidden = [
         'news_password', 'remember_token',
     ];
+
+    public $timestamps = true;
+
+    public function getDateFormat()
+    {
+        return time();
+    }
+
+    public function asDateTime($value)
+    {
+        return $value;
+    }
 
 
 }
